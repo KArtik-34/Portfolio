@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 
 export default function Resume() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -176,44 +177,9 @@ export default function Resume() {
   );
 }
 
-// Add a new Contact Us section component here
 export function ContactUs() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => {
-        setSubmitSuccess(false);
-      }, 3000);
-    }, 1500);
-  };
+  // Replace 'xblogodg' with your actual Formspree form ID
+  const [state, handleSubmit] = useForm('xblogodg');
 
   return (
     <section id="contact" className="py-20 w-full relative">
@@ -224,64 +190,56 @@ export function ContactUs() {
         <h1 className="heading text-center text-3xl md:text-4xl font-bold mb-10 text-white">
           Get In <span className="text-blue-500">Touch</span>
         </h1>
-        
         <div className="bg-black p-8 rounded-xl shadow-2xl border border-gray-800">
-          {submitSuccess ? (
+          {state.succeeded ? (
             <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 text-center mb-6">
               <p className="text-green-400 font-medium">Thank you for your message! I'll get back to you soon.</p>
             </div>
           ) : null}
-          
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-gray-300 mb-2 font-medium">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name" 
+              <input
+                id="name"
+                type="text"
+                name="name"
                 required
-                value={formData.name}
-                onChange={handleChange}
                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Your name"
               />
+              <ValidationError prefix="Name" field="name" errors={state.errors} />
             </div>
-            
             <div>
               <label htmlFor="email" className="block text-gray-300 mb-2 font-medium">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
+              <input
+                id="email"
+                type="email"
+                name="email"
                 required
-                value={formData.email}
-                onChange={handleChange}
                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="your.email@example.com"
               />
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
             </div>
-            
             <div>
               <label htmlFor="message" className="block text-gray-300 mb-2 font-medium">Message</label>
-              <textarea 
-                id="message" 
-                name="message" 
+              <textarea
+                id="message"
+                name="message"
                 rows={5}
                 required
-                value={formData.message}
-                onChange={handleChange}
                 className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Your message here..."
               ></textarea>
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
             </div>
-            
             <div>
               <button
                 type="submit"
-                disabled={isSubmitting}
+                disabled={state.submitting}
                 className="w-full py-3 rounded-lg bg-blue-600 text-white font-semibold shadow-lg hover:bg-blue-700 transition-colors text-lg disabled:opacity-75 flex items-center justify-center"
               >
-                {isSubmitting ? (
+                {state.submitting ? (
                   <>
                     <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -293,19 +251,16 @@ export function ContactUs() {
               </button>
             </div>
           </form>
-          
           <div className="mt-10 pt-8 border-t border-gray-800">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
               <div>
                 <h3 className="text-blue-400 font-semibold mb-2">Email</h3>
                 <p className="text-gray-300">kartikpatni729@gmail.com</p>
               </div>
-              
               <div>
                 <h3 className="text-blue-400 font-semibold mb-2">Phone</h3>
                 <p className="text-gray-300">+91 7986425572</p>
               </div>
-              
               <div>
                 <h3 className="text-blue-400 font-semibold mb-2">Location</h3>
                 <p className="text-gray-300">Punjab, India</p>

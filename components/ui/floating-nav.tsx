@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { AcademicCapIcon } from '@heroicons/react/24/outline';
 
 export const FloatingNav = ({
   navItems,
@@ -13,6 +14,7 @@ export const FloatingNav = ({
     name: string;
     link: string;
     icon?: JSX.Element;
+    showText?: boolean;
   }[];
   className?: string;
 }) => {
@@ -60,17 +62,24 @@ export const FloatingNav = ({
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500 p-2 rounded-full"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="hidden sm:block text-sm">{navItem.name}</span>
+            {navItem.icon}
+            {navItem.showText && (
+              <span className="ml-2 text-sm">{navItem.name}</span>
+            )}
           </Link>
         ))}
-        <button className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full">
-          <span>Login</span>
+        <Link
+          href="#contact"
+          className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white p-2 rounded-full flex items-center justify-center"
+          title="Contact Me"
+        >
+          {/* <AcademicCapIcon className="h-5 w-5" /> */}
           <span className="absolute inset-x-0 w-1/2 mx-auto -bottom-px bg-gradient-to-r from-transparent via-blue-500 to-transparent h-px" />
-        </button>
+          Contact Me
+        </Link>
       </motion.div>
     </AnimatePresence>
   );

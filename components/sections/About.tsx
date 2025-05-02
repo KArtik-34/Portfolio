@@ -64,15 +64,7 @@ const About = () => {
 
   return (
     <section id="about" className="min-h-screen w-full bg-black relative overflow-hidden">
-      <div className="absolute inset-0">
-        <Image
-          src="/grid.svg"
-          alt="Background grid"
-          fill
-          className="opacity-5"
-          priority
-        />
-      </div>
+      {/* Removed grid background to optimize LCP */}
       <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-5 md:grid-row-7 gap-4 lg:gap-7 w-full py-20">
           {/* Main Laptop Card */}

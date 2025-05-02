@@ -133,4 +133,15 @@
 
 .animate-spin-slow {
   animation: spin-slow 20s linear infinite;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url('/grid.svg');
+  background-size: cover;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
 } 

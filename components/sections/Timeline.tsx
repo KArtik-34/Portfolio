@@ -1,90 +1,143 @@
 'use client'
-import React from 'react';
-import { motion } from 'framer-motion';
-import { BriefcaseIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
+import { Timeline } from "@/components/ui/timeline";
+import { BriefcaseIcon, AcademicCapIcon, TrophyIcon, DevicePhoneMobileIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import Image from "next/image";
 
-const timelineItems = [
+const data = [
   {
-    id: 0,
-    title: 'Data Analyst Intern',
-    company: 'Promist Solutions',
-    date: '01 May 2024 - 31 July 2024',
-    description: 'Worked as a Data Analyst intern, performing data cleaning, visualization, and generating actionable business insights for clients.',
-    icon: BriefcaseIcon,
-    isEducation: false,
+    title: "July 2024",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <BriefcaseIcon className="inline w-5 h-5 text-blue-500" /> Data Analyst Intern at Promist Solutions
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+          <li>Analyzed 10,000+ sales & marketing records using Python & Excel, identifying key performance drivers.</li>
+          <li>Streamlined data cleaning workflows, reducing data preparation time by 30%.</li>
+          <li>Developed interactive dashboards & visual reports, accelerating strategic decision-making by 40%.</li>
+          <li>Delivered data-driven marketing recommendations, improving campaign performance by 7%.</li>
+        </ul>
+      </div>
+    ),
   },
   {
-    id: 1,
-    title: 'B.Tech Computer Science Engineering',
-    company: 'Lovely Professional University',
-    date: '2022 - 2026',
-    description: 'Specialized in Data Science and Machine Learning, maintaining excellent academic performance throughout the program.',
-    icon: AcademicCapIcon,
-    isEducation: true,
+    title: "Feb 2025",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <ChartBarIcon className="inline w-5 h-5 text-green-500" /> Beverage Data Analysis Project
+          <a href="https://github.com/Beverage-Sales-Analysis" target="_blank" rel="noopener noreferrer" className="ml-2 underline text-blue-500">GitHub</a>
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+          <li>Analyzed 10,000+ sales & marketing records using Python & Excel.</li>
+          <li>Streamlined data cleaning workflows, reducing data preparation time by 30%.</li>
+          <li>Developed interactive dashboards & visual reports, accelerating strategic decision-making by 40%.</li>
+          <li>Delivered data-driven marketing recommendations, improving campaign performance by 7%.</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "Jan 2025",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <ChartBarIcon className="inline w-5 h-5 text-green-500" /> Industry Trends Analysis
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+          <li>Engineered a trend analysis solution across 5 departments, aligning product strategies with industry standards.</li>
+          <li>Processed 25K+ records from multiple sources, tracking technology adoption & hiring trends.</li>
+          <li>Built automated data visualization dashboards, reducing report generation time by 40%.</li>
+          <li>Provided strategic insights, increasing decision-making efficiency by 20%.</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "2023 - 2024",
+    content: (
+      <div className="min-h-[700px]">
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <Image src="/kubernetes.png" alt="GCP Kubernetes" width={48} height={48} className="inline w-6 h-6 rounded mr-2" /> Google Cloud Platform (GCP) Expertise
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300 mb-4">
+          <li>Completed 10+ labs on Cloud Computing, Big Data & ML with Google Cloud Skills Boost.</li>
+          <li>Hands-on with core infrastructure, services, and Kubernetes on GCP.</li>
+        </ul>
+        <div className="grid grid-cols-2 gap-6 mt-4">
+          <Image src="/core%20infra.png" alt="Core Infra" width={400} height={300} className="rounded-lg shadow w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105" />
+          <Image src="/core%20services.png" alt="Core Services" width={400} height={300} className="rounded-lg shadow w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105" />
+          <Image src="/create%20and%20manage%20resource.png" alt="Create and Manage Resource" width={400} height={300} className="rounded-lg shadow w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105" />
+          <Image src="/kubernetes.png" alt="Kubernetes" width={400} height={300} className="rounded-lg shadow w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105" />
+          <Image src="/infra.png" alt="Infra" width={400} height={300} className="rounded-lg shadow w-full aspect-[4/3] object-cover transition-transform duration-300 hover:scale-105" />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "Jan 2022",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <ChartBarIcon className="inline w-5 h-5 text-green-500" /> Banking Management System
+          <a href="https://github.com/Banking_Management_System" target="_blank" rel="noopener noreferrer" className="ml-2 underline text-blue-500">GitHub</a>
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+          <li>Developed a secure banking system using Python (backend) & SQL (database), processing 500+ transactions.</li>
+          <li>Designed an optimized database handling 10,000+ customer records.</li>
+          <li>Improved SQL query performance, cutting response times by 25% & retrieval times by 20%.</li>
+          <li>Implemented core banking features (account creation, deposits, withdrawals, balance tracking).</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "March 2023",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <TrophyIcon className="inline w-5 h-5 text-yellow-500" /> Event Operations Manager – One World College Event
+        </p>
+        <ul className="list-disc ml-6 text-xs md:text-sm text-neutral-700 dark:text-neutral-300">
+          <li>Led planning & execution, managing 13 stalls & a team of 18, generating ₹3.5L+ in 3 days.</li>
+          <li>Negotiated 10+ vendor partnerships, increasing revenue by 15% through hybrid revenue models.</li>
+          <li>Managed personal sales stalls, sourcing wholesale products & achieving a 70%+ sales conversion rate.</li>
+        </ul>
+      </div>
+    ),
+  },
+  {
+    title: "2022 - 2026",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <AcademicCapIcon className="inline w-5 h-5 text-purple-500" /> B.Tech Computer Science Engineering, Data Science and ML
+        </p>
+        <span className="text-xs text-neutral-500">Lovely Professional University, Phagwara, Punjab</span>
+      </div>
+    ),
+  },
+  {
+    title: "2020 - 2022",
+    content: (
+      <div>
+        <p className="mb-2 text-xs font-normal text-neutral-800 md:text-sm dark:text-neutral-200 flex items-center gap-2">
+          <AcademicCapIcon className="inline w-5 h-5 text-purple-500" /> Intermediate
+        </p>
+        <span className="text-xs text-neutral-500">Don Bosco Sr Sec. School, Pithoragarh, Uttarakhand</span>
+      </div>
+    ),
   },
 ];
 
-export const Timeline: React.FC = () => {
+export default function TimelineSection() {
   return (
-    <section className="section-padding relative overflow-hidden">
-      {/* Simple Black Background */}
+    <section id="timeline" className="section-padding relative overflow-visible bg-white">
+      {/* Removed grid background to optimize LCP */}
       <div className="absolute inset-0 bg-black"></div>
-
       <div className="container relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Experience & <span className="text-blue-500">Education</span>
-          </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            A timeline of my professional journey and academic background.
-          </p>
-        </motion.div>
-
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gray-700" />
-          
-          <div className="space-y-12">
-            {timelineItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex items-center ${
-                  index % 2 === 0 ? 'justify-start' : 'justify-end'
-                }`}
-              >
-                <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
-                  <div className="bg-black p-6 rounded-lg shadow-lg border border-gray-800">
-                    <div className="flex items-center mb-4">
-                      <item.icon className="w-6 h-6 text-blue-500 mr-2" />
-                      <h3 className="text-xl font-semibold text-white">
-                        {item.title}
-                      </h3>
-                    </div>
-                    <p className="text-gray-300 font-medium mb-2">
-                      {item.company}
-                    </p>
-                    <p className="text-sm text-gray-400 mb-4">
-                      {item.date}
-                    </p>
-                    <p className="text-gray-300">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
+        <Timeline data={data} />
       </div>
     </section>
   );
-}; 
+} 
