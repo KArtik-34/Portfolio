@@ -39,7 +39,7 @@ export default function Footer() {
               Business analyst, developer, and ML enthusiast dedicated to transforming data into strategic insights.
             </p>
             <div className="flex space-x-4">
-              <a href="https://github.com/kartikay-bagla" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
+              <a href="https://github.com/KArtik-34" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
                 <Github className="w-6 h-6" />
                 <span className="sr-only">GitHub</span>
               </a>
