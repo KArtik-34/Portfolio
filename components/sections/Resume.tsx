@@ -110,7 +110,7 @@ export default function Resume() {
               <h2 className="text-2xl font-bold text-white mb-1">Kartikay Patni</h2>
               <p className="text-blue-400">Data Analyst & ML Developer</p>
               <div className="flex justify-center items-center gap-3 mt-2 text-sm text-gray-300">
-                <span>7986425572</span>
+                <span>+91 7986425572</span>
                 <span>•</span>
                 <span>kartikpatni729@gmail.com</span>
               </div>
