@@ -1,4 +1,4 @@
-// File: C:\Users\KARTI\Desktop\prtflo\app\page.tsx
+// File: /home/grey-hat/Desktop/Portfolio/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
